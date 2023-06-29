@@ -5,41 +5,24 @@ const vm = Vue.createApp({
     }
   },
 
-  beforeCreate() {
-    console.log("beforeCreate ", this.message);
-  },
-
-  created() {
-    console.log("created ", this.message);
-  },
-
-  beforeMount() {
-    console.log("beforeMount ", this.$el);
-  },
-
-  mounted() {
-    console.log("mounted ", this.$el);
-  },
-
-  beforeUpdate() {
-    console.log("beforeUpdate ");
-  },
-
-  updated() {
-    console.log("updated ", this.$el);
-  },
-
-  beforeUnmount() {
-    console.log("beforeUnmount ");
-  },
-
-  unmounted() {
-    console.log("unmounted ");
-  },
+  template: `<p>{{ message }}</p>`,
 });
 
 vm.mount("#app");
 
-// setTimeout(() => {
-//   vm.mount("#app");
-// }, 3000);
+const vm2 = Vue.createApp({
+  data() {
+    return {
+      message: "Hello 22222!"
+    }
+  },
+
+  render() {
+    return Vue.h(
+      "h1",
+      this.message
+    );
+  },
+});
+
+vm2.mount("#app2");
